@@ -7,11 +7,11 @@ import L from "leaflet"
 import type { Attraction } from "@/lib/types"
 import { getRouteAction } from "@/app/actions"
 
-const icon = L.icon({
-  iconUrl: "/placeholder.svg?height=41&width=25",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
+const icon = L.divIcon({
+  html: `<div style="font-size: 24px;">📍</div>`,
+  className: "",
+  iconSize: [24, 24],
+  iconAnchor: [12, 24],
 })
 
 type TravelMode = "driving" | "walking"
@@ -64,7 +64,12 @@ export default function Map({ schedules, center, travelMode, routeColors }: MapP
 
         return (
           <React.Fragment key={schedule.day}>
-            {route && <Polyline pathOptions={{ color, weight: 5, opacity: 0.7 }} positions={route} />}
+            {route && (
+              <Polyline
+                pathOptions={{ color, weight: 5, opacity: 0.7 }}
+                positions={route}
+              />
+            )}
             {schedule.orderedRoute.map((att) => (
               <Marker key={att.id} position={[att.lat, att.lng]} icon={icon}>
                 <Popup>
