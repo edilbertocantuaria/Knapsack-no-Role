@@ -154,20 +154,24 @@ export default function UltimateTravelOptimizerPage() {
     if (optimizationResult.selectedAttractions.length > 0) {
       const distributedSchedules = distributeAttractions(optimizationResult.selectedAttractions, dailyHours)
       const finalSchedules = distributedSchedules.map((schedule) => {
-        const { orderedRoute, totalTravelTime, totalTravelCost } = findBestRoute(
+        const { orderedRoute, totalTravelTime, totalTravelCost, totalDistance, routeDistances } = findBestRoute(
           schedule.attractions,
           travelMode === "driving" ? cityData.distances.driving : cityData.distances.walking,
         )
-        return { ...schedule, orderedRoute, travelTime: totalTravelTime, travelCost: totalTravelCost }
+        return { ...schedule, orderedRoute, travelTime: totalTravelTime, travelCost: totalTravelCost, totalDistance, routeDistances }
       })
 
-      const totalTravelCost = finalSchedules.reduce((sum, s) => sum + s.travelCost, 0)
+      const totalAttractionCost = finalSchedules.reduce((sum, s) => sum + s.costUsed, 0)
+      const totalAttractionTime = finalSchedules.reduce((sum, s) => sum + s.timeUsed, 0)
+      const totalDistanceKm = finalSchedules.reduce((sum, s) => sum + (s.totalDistance || 0), 0)
+
       setResult(finalSchedules)
       setSummary({
         totalBenefit: optimizationResult.totalBenefit,
-        totalTime: optimizationResult.totalTime,
-        totalCost: optimizationResult.totalCost,
-        totalTravelCost,
+        totalTime: totalAttractionTime, // Apenas tempo das atrações, não incluir tempo de deslocamento
+        totalCost: totalAttractionCost, // Apenas custos de entrada das atrações, sem custos de deslocamento
+        totalTravelCost: 0, // Não incluir custos de deslocamento
+        totalDistance: totalDistanceKm, // Total de quilômetros percorridos
       })
     } else {
       setResult([])
@@ -234,7 +238,14 @@ export default function UltimateTravelOptimizerPage() {
   const togglePrioritized = (id: number) => {
     setPrioritized((prev) => {
       const newSet = new Set(prev)
-      newSet.has(id) ? newSet.delete(id) : newSet.add(id)
+      if (newSet.has(id)) {
+        newSet.delete(id)
+        console.log(`Removida priorização da atração ID: ${id}`)
+      } else {
+        newSet.add(id)
+        console.log(`Adicionada priorização da atração ID: ${id}`)
+      }
+      console.log('IDs priorizados:', Array.from(newSet))
       return newSet
     })
   }
@@ -426,7 +437,7 @@ export default function UltimateTravelOptimizerPage() {
                     {result.length > 0 && summary ? (
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div className="space-y-4">
-                          <div className="flex justify-around text-center p-4 bg-muted rounded-lg">
+                          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-center p-4 bg-muted rounded-lg">
                             <div className="flex flex-col items-center">
                               <Award className="h-6 w-6 text-secondary mb-1" />
                               <span className="font-bold text-xl">{summary.totalBenefit.toFixed(0)}</span>
@@ -440,9 +451,16 @@ export default function UltimateTravelOptimizerPage() {
                             <div className="flex flex-col items-center">
                               <Wallet className="h-6 w-6 text-accent mb-1" />
                               <span className="font-bold text-xl">
-                                R$ {(summary.totalCost + summary.totalTravelCost).toFixed(2)}
+                                R$ {summary.totalCost.toFixed(2)}
                               </span>
                               <span className="text-sm text-muted-foreground">Custo Total</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                              <MapPin className="h-6 w-6 text-green-500 mb-1" />
+                              <span className="font-bold text-xl">
+                                {(summary.totalDistance || 0).toFixed(1)} km
+                              </span>
+                              <span className="text-sm text-muted-foreground">Deslocamento</span>
                             </div>
                           </div>
                           <Accordion
@@ -453,19 +471,24 @@ export default function UltimateTravelOptimizerPage() {
                             {result.map((day) => (
                               <AccordionItem key={day.day} value={`day-${day.day}`}>
                                 <AccordionTrigger className="text-lg font-semibold">
-                                  Dia {day.day} (Passeios: {day.timeUsed}h | Desloc.: ~{day.travelTime} min / R$
-                                  {day.travelCost.toFixed(2)})
+                                  Dia {day.day} (Passeios: {day.timeUsed}h | Desloc.: ~{day.travelTime} min)
                                 </AccordionTrigger>
                                 <AccordionContent>
                                   <div className="font-semibold mb-2 flex items-center">
                                     <Route className="mr-2 h-5 w-5 text-primary" /> Rota Otimizada:
                                   </div>
                                   <ol className="list-decimal list-inside space-y-2 mb-4">
-                                    {day.orderedRoute.map((att) => (
-                                      <li key={att.id}>
-                                        {att.nome} ({att.tempo}h)
-                                      </li>
-                                    ))}
+                                    {day.orderedRoute.map((att, index) => {
+                                      const distance = index === 0 ? 0 : (day.routeDistances?.[index - 1] || 0)
+                                      return (
+                                        <li key={att.id} className="flex justify-between items-center">
+                                          <span>
+                                            {att.nome} ({att.tempo}h) | R$ {att.preco.toFixed(2)} |
+                                            <span className="text-muted-foreground"> {distance.toFixed(1)} km</span>
+                                          </span>
+                                        </li>
+                                      )
+                                    })}
                                   </ol>
                                   <div className="font-semibold mb-2 flex items-center">
                                     <Utensils className="mr-2 h-5 w-5 text-primary" /> Sugestões de Restaurantes:
@@ -610,6 +633,7 @@ export default function UltimateTravelOptimizerPage() {
             size="icon"
             className="h-8 w-8"
             onClick={() => togglePrioritized(item.id)}
+            title="Priorizar"
           >
             <Star
               className={`h-5 w-5 transition-colors ${
@@ -630,6 +654,7 @@ export default function UltimateTravelOptimizerPage() {
                 return n
               })
             }
+            title="Excluir do Roteiro"
           >
             <Trash2
               className={`h-4 w-4 transition-colors ${
