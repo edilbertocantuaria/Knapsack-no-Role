@@ -12,26 +12,16 @@ export function optimizeItinerary(
   const n = items.length
   const prioritizedSet = new Set(prioritizedIds)
 
-  console.log('IDs priorizados recebidos no optimizer:', prioritizedIds)
-  console.log('Total de atrações:', n)
-
   // Multiplicar o benefício das atrações priorizadas por 10
   // para garantir que sejam escolhidas na frente de outras atrações
   const PRIORITY_MULTIPLIER = 10
 
-  const modifiedItems = items.map((item) => {
-    const isPrioritized = prioritizedSet.has(item.id)
-    const newBenefit = isPrioritized ? item.beneficio * PRIORITY_MULTIPLIER : item.beneficio
-
-    if (isPrioritized) {
-      console.log(`Atração priorizada: ${item.nome} (ID: ${item.id}) - Benefício: ${item.beneficio} -> ${newBenefit}`)
-    }
-
-    return {
-      ...item,
-      beneficio: newBenefit,
-    }
-  })
+  const modifiedItems = items.map((item) => ({
+    ...item,
+    beneficio: prioritizedSet.has(item.id)
+      ? item.beneficio * PRIORITY_MULTIPLIER
+      : item.beneficio,
+  }))
 
   const weightsTime = modifiedItems.map((item) => Math.round(item.tempo * TIME_SCALE))
   // Usar apenas o preço das atrações para o knapsack, sem custos de deslocamento
@@ -86,12 +76,6 @@ export function optimizeItinerary(
 
   // Reverter a ordem das atrações selecionadas
   const reversedAttractions = [...selectedAttractions].reverse()
-
-  console.log('Atrações selecionadas pelo algoritmo:')
-  reversedAttractions.forEach(att => {
-    const isPrioritized = prioritizedSet.has(att.id)
-    console.log(`- ${att.nome} (ID: ${att.id}) ${isPrioritized ? '⭐ PRIORIZADA' : ''}`)
-  })
 
   return {
     selectedAttractions: reversedAttractions,

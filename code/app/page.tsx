@@ -238,14 +238,7 @@ export default function UltimateTravelOptimizerPage() {
   const togglePrioritized = (id: number) => {
     setPrioritized((prev) => {
       const newSet = new Set(prev)
-      if (newSet.has(id)) {
-        newSet.delete(id)
-        console.log(`Removida priorização da atração ID: ${id}`)
-      } else {
-        newSet.add(id)
-        console.log(`Adicionada priorização da atração ID: ${id}`)
-      }
-      console.log('IDs priorizados:', Array.from(newSet))
+      newSet.has(id) ? newSet.delete(id) : newSet.add(id)
       return newSet
     })
   }
@@ -395,6 +388,11 @@ export default function UltimateTravelOptimizerPage() {
             </Card>
 
             <div className="space-y-2">
+              {prioritized.size > 0 && (
+                <div className="text-sm text-center text-yellow-400 bg-yellow-400/10 rounded-lg p-2">
+                  ⭐ {prioritized.size} atração{prioritized.size > 1 ? 'ões' : ''} priorizada{prioritized.size > 1 ? 's' : ''}
+                </div>
+              )}
               <Button onClick={handleOptimize} className="w-full text-lg py-6" disabled={isLoading}>
                 {isLoading ? "Otimizando..." : "Gerar Roteiro Inteligente"}
               </Button>
@@ -638,7 +636,7 @@ export default function UltimateTravelOptimizerPage() {
             <Star
               className={`h-5 w-5 transition-colors ${
                 prioritized.has(item.id)
-                  ? "text-secondary fill-secondary"
+                  ? "text-yellow-400 fill-yellow-400"
                   : "text-white/80"
               }`}
             />
