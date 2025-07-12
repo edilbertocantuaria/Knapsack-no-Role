@@ -15,7 +15,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Separator } from "@/components/ui/separator"
 import {
   Hourglass,
-  Award,
   Clock,
   Wallet,
   MapPin,
@@ -79,6 +78,7 @@ interface Summary {
 }
 
 export default function UltimateTravelOptimizerPage() {
+  const [isMounted, setIsMounted] = useState(false)
   const [selectedCityId, setSelectedCityId] = useState<string>("brasilia")
   const [cityData, setCityData] = useState<CityData | null>(null)
   const [numDays, setNumDays] = useState(2)
@@ -94,6 +94,10 @@ export default function UltimateTravelOptimizerPage() {
   const [savedPlans, setSavedPlans] = useState<SavedPlan[]>([])
   const [planName, setPlanName] = useState("")
   const [isSaveDialogOpen, setSaveDialogOpen] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     const loadCityData = async () => {
@@ -241,6 +245,10 @@ export default function UltimateTravelOptimizerPage() {
       newSet.has(id) ? newSet.delete(id) : newSet.add(id)
       return newSet
     })
+  }
+
+  if (!isMounted) {
+    return null
   }
 
   if (!cityData) {
@@ -435,12 +443,7 @@ export default function UltimateTravelOptimizerPage() {
                     {result.length > 0 && summary ? (
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div className="space-y-4">
-                          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-center p-4 bg-muted rounded-lg">
-                            <div className="flex flex-col items-center">
-                              <Award className="h-6 w-6 text-secondary mb-1" />
-                              <span className="font-bold text-xl">{summary.totalBenefit.toFixed(0)}</span>
-                              <span className="text-sm text-muted-foreground">Benefício</span>
-                            </div>
+                          <div className="grid grid-cols-3 gap-4 text-center p-4 bg-muted rounded-lg">
                             <div className="flex flex-col items-center">
                               <Clock className="h-6 w-6 text-blue-500 mb-1" />
                               <span className="font-bold text-xl">{summary.totalTime}h</span>
@@ -451,7 +454,7 @@ export default function UltimateTravelOptimizerPage() {
                               <span className="font-bold text-xl">
                                 R$ {summary.totalCost.toFixed(2)}
                               </span>
-                              <span className="text-sm text-muted-foreground">Custo Total</span>
+                              <span className="text-sm text-muted-foreground">Custo</span>
                             </div>
                             <div className="flex flex-col items-center">
                               <MapPin className="h-6 w-6 text-green-500 mb-1" />
