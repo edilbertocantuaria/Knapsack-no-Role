@@ -7,25 +7,36 @@ export function optimizeItinerary(
   prioritizedIds: number[],
   distances: DistanceData,
 ) {
-  const TIME_SCALE = 2 
+  const TIME_SCALE = 2
   const scaledMaxTime = maxTime * TIME_SCALE
   const n = items.length
   const prioritizedSet = new Set(prioritizedIds)
 
-  const modifiedItems = items.map((item) => ({
-    ...item,
-    beneficio: item.beneficio + (prioritizedSet.has(item.id) ? 1000 : 0),
-  }))
+  console.log('IDs priorizados recebidos no optimizer:', prioritizedIds)
+  console.log('Total de atrações:', n)
+
+  // Multiplicar o benefício das atrações priorizadas por 10
+  // para garantir que sejam escolhidas na frente de outras atrações
+  const PRIORITY_MULTIPLIER = 10
+
+  const modifiedItems = items.map((item) => {
+    const isPrioritized = prioritizedSet.has(item.id)
+    const newBenefit = isPrioritized ? item.beneficio * PRIORITY_MULTIPLIER : item.beneficio
+
+    if (isPrioritized) {
+      console.log(`Atração priorizada: ${item.nome} (ID: ${item.id}) - Benefício: ${item.beneficio} -> ${newBenefit}`)
+    }
+
+    return {
+      ...item,
+      beneficio: newBenefit,
+    }
+  })
 
   const weightsTime = modifiedItems.map((item) => Math.round(item.tempo * TIME_SCALE))
-  const weightsCost = modifiedItems.map((item) => {
-    const avgTravelCost =
-      distances.costs[item.id] && Object.keys(distances.costs[item.id]).length > 0
-        ? Object.values(distances.costs[item.id]).reduce((a, b) => a + b, 0) /
-          Object.keys(distances.costs[item.id]).length
-        : 5
-    return Math.round(item.preco + avgTravelCost)
-  })
+  // Usar apenas o preço das atrações para o knapsack, sem custos de deslocamento
+  // Os custos de deslocamento serão calculados separadamente pelo TSP solver
+  const weightsCost = modifiedItems.map((item) => Math.round(item.preco))
   const values = modifiedItems.map((item) => item.beneficio)
 
   const dp: number[][][] = Array(n + 1)
@@ -66,12 +77,24 @@ export function optimizeItinerary(
     }
   }
 
+  // Calcular benefícios usando valores originais (sem multiplicador)
   const totalBenefit = selectedAttractions.reduce((sum, item) => sum + item.beneficio, 0)
   const totalTime = selectedAttractions.reduce((sum, item) => sum + item.tempo, 0)
+  // Usar apenas o preço das atrações, não incluir custos de deslocamento aqui
+  // Os custos de deslocamento serão calculados separadamente no TSP solver
   const totalCost = selectedAttractions.reduce((sum, item) => sum + item.preco, 0)
 
+  // Reverter a ordem das atrações selecionadas
+  const reversedAttractions = [...selectedAttractions].reverse()
+
+  console.log('Atrações selecionadas pelo algoritmo:')
+  reversedAttractions.forEach(att => {
+    const isPrioritized = prioritizedSet.has(att.id)
+    console.log(`- ${att.nome} (ID: ${att.id}) ${isPrioritized ? '⭐ PRIORIZADA' : ''}`)
+  })
+
   return {
-    selectedAttractions: selectedAttractions.reverse(),
+    selectedAttractions: reversedAttractions,
     totalBenefit,
     totalTime,
     totalCost,
