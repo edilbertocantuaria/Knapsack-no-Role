@@ -7,7 +7,8 @@
 </div>
 
 ## 🎥 Vídeo Explicativo
-- Vídeo explicativo: [Em breve no YouTube]()
+- [Vídeo 1 - Organização e Funcionamento do Códgio -  Kauan](https://www.youtube.com/watch?v=Zd9Fg8jqi0c)
+- [Video 2 - Funcionalidades do Aplicativo Knapsack no Role - Edilberto]()
 
 
 Neste vídeo, será apresentada uma explicação detalhada sobre o funcionamento do algoritmo de Knapsack aplicado ao planejamento de roteiros turísticos, demonstrando como otimizar a seleção de atrações considerando tempo, orçamento e preferências pessoais.
