@@ -275,8 +275,40 @@ export default function UltimateTravelOptimizerPage() {
         </header>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-
           <div className="xl:col-span-1 space-y-6">
+          <div className="xl:col-span-1">
+            <Card>
+              <CardHeader>
+                <CardTitle>Meus Roteiros Salvos</CardTitle>
+                <CardDescription>Carregue ou exclua um roteiro salvo anteriormente.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {savedPlans.length > 0 ? (
+                  <div className="space-y-2">
+                    {savedPlans.map((p) => (
+                      <div key={p.id} className="flex justify-between items-center p-2 border rounded-lg">
+                        <div className="flex flex-col">
+                          <span className="font-semibold">{p.name}</span>
+                          <span className="text-sm text-muted-foreground">{CITIES[p.cityId]?.name}</span>
+                        </div>
+                        <div className="flex gap-1">
+                          <Button size="sm" variant="outline" onClick={() => handleLoadPlan(p)}>
+                            <FolderOpen className="h-4 w-4 mr-2" />
+                            Carregar
+                          </Button>
+                          <Button size="sm" variant="destructive" onClick={() => handleDeletePlan(p.id)}>
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-center text-muted-foreground py-4">Nenhum roteiro salvo.</p>
+                )}
+              </CardContent>
+            </Card>
+          </div>
             <Card>
               <CardHeader>
                 <CardTitle>1. Destino e Modo</CardTitle>
@@ -425,8 +457,110 @@ export default function UltimateTravelOptimizerPage() {
             </div>
           </div>
 
+          <div className="xl:col-span-2 space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Atrações Disponíveis em {CITIES[selectedCityId].name}</CardTitle>
+                <CardDescription>Marque com uma estrela as que deseja priorizar.</CardDescription>
+              </CardHeader>
+              <CardContent className="p-6">
+                <Carousel
+                  opts={{
+                    align: "start",
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-4">
+                    {cityData.attractions.map((item) => (
+                      <CarouselItem key={item.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                        <div className="p-1">
+                          <Card
+                            className={`h-[350px] flex flex-col overflow-hidden rounded-lg ${visited.has(item.nome) ? "bg-muted/50" : ""}`}
+                          >
+                            <div className="relative">
+                              <div className={`relative ${visited.has(item.nome) ? "blur-sm" : ""}`}>
+                                <Image
+                                  src={item.image}
+                                  alt={`Imagem de ${item.nome}`}
+                                  width={400}
+                                  height={225}
+                                  className="object-cover w-full h-40 transition-all duration-300"
+                                />
+                              </div>
+                              <div className="absolute top-2 right-2 flex items-center bg-black/50 rounded-full p-0.5">
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  className="h-8 w-8"
+                                  onClick={() => togglePrioritized(item.id)}
+                                  title="Priorizar"
+                                >
+                                  <Star
+                                    className={`h-5 w-5 transition-colors ${
+                                      prioritized.has(item.id)
+                                        ? "text-yellow-400 fill-yellow-400"
+                                        : "text-white/80"
+                                    }`}
+                                  />
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="icon"
+                                  className="h-8 w-8"
+                                  onClick={() =>
+                                    setVisited((prev) => {
+                                      const n = new Set(prev)
+                                      n.has(item.nome) ? n.delete(item.nome) : n.add(item.nome)
+                                      return n
+                                    })
+                                  }
+                                  title="Excluir do Roteiro"
+                                >
+                                  <Trash2
+                                    className={`h-4 w-4 transition-colors ${
+                                      visited.has(item.nome) ? "text-destructive" : "text-white/80"
+                                    }`}
+                                  />
+                                </Button>
+                              </div>
+                            </div>
+                            <CardContent className="p-4 flex-grow">
+                              <h3
+                                className={`font-bold text-lg ${
+                                  visited.has(item.nome) ? "line-through text-muted-foreground" : ""
+                                }`}
+                              >
+                                {item.nome}
+                              </h3>
+                              <p className="text-sm text-muted-foreground mt-1 line-clamp-3">
+                                {item.descricao}
+                              </p>
+                            </CardContent>
+                            <CardFooter className="p-4 pt-0 flex justify-between text-sm text-muted-foreground border-t mt-auto">
+                              <span className="flex items-center">
+                                <Clock className="mr-1 h-4 w-4" />
+                                {item.tempo}h
+                              </span>
+                              <span className="flex items-center">
+                                <Wallet className="mr-1 h-4 w-4" />
+                                R$ {item.preco.toFixed(2)}
+                              </span>
+                              <span className="flex items-center">
+                                <MapPin className="mr-1 h-4 w-4" />
+                                {item.categoria}
+                              </span>
+                            </CardFooter>
+                          </Card>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="ml-12 hidden sm:flex" />
+                  <CarouselNext className="mr-12 hidden sm:flex" />
+                </Carousel>
+              </CardContent>
+            </Card>
 
-          <div className="xl:col-span-2">
             <Card className="min-h-[700px]">
               <CardHeader>
                 <CardTitle>Seu Roteiro Otimizado para {CITIES[selectedCityId].name}</CardTitle>
@@ -559,150 +693,7 @@ export default function UltimateTravelOptimizerPage() {
               </CardContent>
             </Card>
           </div>
-        </div>
-
-        <Separator className="my-8" />
-
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-          <div className="xl:col-span-1">
-            <Card>
-              <CardHeader>
-                <CardTitle>Meus Roteiros Salvos</CardTitle>
-                <CardDescription>Carregue ou exclua um roteiro salvo anteriormente.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {savedPlans.length > 0 ? (
-                  <div className="space-y-2">
-                    {savedPlans.map((p) => (
-                      <div key={p.id} className="flex justify-between items-center p-2 border rounded-lg">
-                        <div className="flex flex-col">
-                          <span className="font-semibold">{p.name}</span>
-                          <span className="text-sm text-muted-foreground">{CITIES[p.cityId]?.name}</span>
-                        </div>
-                        <div className="flex gap-1">
-                          <Button size="sm" variant="outline" onClick={() => handleLoadPlan(p)}>
-                            <FolderOpen className="h-4 w-4 mr-2" />
-                            Carregar
-                          </Button>
-                          <Button size="sm" variant="destructive" onClick={() => handleDeletePlan(p.id)}>
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-center text-muted-foreground py-4">Nenhum roteiro salvo.</p>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="xl:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Atrações Disponíveis em {CITIES[selectedCityId].name}</CardTitle>
-                <CardDescription>Marque com uma estrela as que deseja priorizar.</CardDescription>
-              </CardHeader>
-              <CardContent className="p-6">
-                <Carousel
-                  opts={{
-                    align: "start",
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-4">
-                    {cityData.attractions.map((item) => (
-<CarouselItem key={item.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-  <div className="p-1">
-    <Card
-      className={`h-[350px] flex flex-col overflow-hidden rounded-lg ${visited.has(item.nome) ? "bg-muted/50" : ""}`}
-    >
-      <div className="relative">
-        <div className={`relative ${visited.has(item.nome) ? "blur-sm" : ""}`}>
-          <Image
-            src={item.image}
-            alt={`Imagem de ${item.nome}`}
-            width={400}
-            height={225}
-            className="object-cover w-full h-40 transition-all duration-300"
-          />
-        </div>
-        <div className="absolute top-2 right-2 flex items-center bg-black/50 rounded-full p-0.5">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8"
-            onClick={() => togglePrioritized(item.id)}
-            title="Priorizar"
-          >
-            <Star
-              className={`h-5 w-5 transition-colors ${
-                prioritized.has(item.id)
-                  ? "text-yellow-400 fill-yellow-400"
-                  : "text-white/80"
-              }`}
-            />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8"
-            onClick={() =>
-              setVisited((prev) => {
-                const n = new Set(prev)
-                n.has(item.nome) ? n.delete(item.nome) : n.add(item.nome)
-                return n
-              })
-            }
-            title="Excluir do Roteiro"
-          >
-            <Trash2
-              className={`h-4 w-4 transition-colors ${
-                visited.has(item.nome) ? "text-destructive" : "text-white/80"
-              }`}
-            />
-          </Button>
-        </div>
-      </div>
-      <CardContent className="p-4 flex-grow">
-        <h3
-          className={`font-bold text-lg ${
-            visited.has(item.nome) ? "line-through text-muted-foreground" : ""
-          }`}
-        >
-          {item.nome}
-        </h3>
-        <p className="text-sm text-muted-foreground mt-1 line-clamp-3">
-          {item.descricao}
-        </p>
-      </CardContent>
-      <CardFooter className="p-4 pt-0 flex justify-between text-sm text-muted-foreground border-t mt-auto">
-        <span className="flex items-center">
-          <Clock className="mr-1 h-4 w-4" />
-          {item.tempo}h
-        </span>
-        <span className="flex items-center">
-          <Wallet className="mr-1 h-4 w-4" />
-          R$ {item.preco.toFixed(2)}
-        </span>
-        <span className="flex items-center">
-          <MapPin className="mr-1 h-4 w-4" />
-          {item.categoria}
-        </span>
-      </CardFooter>
-    </Card>
-  </div>
-</CarouselItem>
-
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="ml-12 hidden sm:flex" />
-                  <CarouselNext className="mr-12 hidden sm:flex" />
-                </Carousel>
-              </CardContent>
-            </Card>
-          </div>
+          
         </div>
       </div>
     </div>

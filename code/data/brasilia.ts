@@ -16,7 +16,8 @@ const brasiliaData: CityData = {
       lng: -47.8671065,
       opens: 9,
       closes: 17,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrZ6FOWe98cvP84srHz8MjltlngzJ-XbCfKB5hMuXllGasy_pwpHXnWsImotwjOTrI4FYiymcgZw4-n6rXqyLFQRZ9fw-ZySa7Uoy1m1Zq5RF6-dT_JkeEAjtgy4DrvkGYMN3mM=w408-h272-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrZ6FOWe98cvP84srHz8MjltlngzJ-XbCfKB5hMuXllGasy_pwpHXnWsImotwjOTrI4FYiymcgZw4-n6rXqyLFQRZ9fw-ZySa7Uoy1m1Zq5RF6-dT_JkeEAjtgy4DrvkGYMN3mM=w408-h272-k-no",
     },
     {
       id: 2,
@@ -32,7 +33,8 @@ const brasiliaData: CityData = {
       lng: -47.8707384,
       opens: 8,
       closes: 17,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHkjdXYheNvCrJR0ySg1EcEq_vYhbRrdvE6no3cOSdnjNY6MokhS-Fm2-fs9udwxtc-wmXfuLrG0YlQJizucqcz19Tyc2s-9HYdMr3lGrnul5T25jrzXS3cRMqJpjiow9ncEl3xw=w408-h306-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHkjdXYheNvCrJR0ySg1EcEq_vYhbRrdvE6no3cOSdnjNY6MokhS-Fm2-fs9udwxtc-wmXfuLrG0YlQJizucqcz19Tyc2s-9HYdMr3lGrnul5T25jrzXS3cRMqJpjiow9ncEl3xw=w408-h306-k-no",
     },
     {
       id: 4,
@@ -48,7 +50,8 @@ const brasiliaData: CityData = {
       lng: -47.8325974,
       opens: 0,
       closes: 24,
-      image: "https://imagens.ebc.com.br/PKCDGmaj5omY2WBg_Tn5i-5koZg=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2024/04/22/vac_abr2204246464.jpg?itok=C1Op1wal",
+      image:
+        "https://imagens.ebc.com.br/PKCDGmaj5omY2WBg_Tn5i-5koZg=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2024/04/22/vac_abr2204246464.jpg?itok=C1Op1wal",
     },
     {
       id: 5,
@@ -60,8 +63,8 @@ const brasiliaData: CityData = {
       avaliacao: 4.8,
       categoria: "Monumento",
       beneficio: 96,
-      lat: -15.8228509,
-      lng: -47.832575,
+      lat: -15.812755,
+      lng: -47.8354419,
       opens: 0,
       closes: 24,
       image:
@@ -81,7 +84,8 @@ const brasiliaData: CityData = {
       lng: -47.9040183,
       opens: 0,
       closes: 24,
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/01/46/cd/visao-aerea.jpg?w=900&h=-1&s=1",
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/01/46/cd/visao-aerea.jpg?w=900&h=-1&s=1",
     },
     {
       id: 7,
@@ -97,7 +101,8 @@ const brasiliaData: CityData = {
       lng: -47.9159347,
       opens: 9,
       closes: 18,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqxWmnSTIEl1neJIszdoWS7l1zKooOE0AJLHxr-6dPk7M_NOcynUvzbqxUaeccFHQISo2mH7N_rvYGSAyIljD5VShqG1ktv2kED0VLcLPR4lqWEtTon3rwuWT_HnK4dnLuR3Ux8iA=w408-h306-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqxWmnSTIEl1neJIszdoWS7l1zKooOE0AJLHxr-6dPk7M_NOcynUvzbqxUaeccFHQISo2mH7N_rvYGSAyIljD5VShqG1ktv2kED0VLcLPR4lqWEtTon3rwuWT_HnK4dnLuR3Ux8iA=w408-h306-k-no",
     },
     {
       id: 8,
@@ -113,7 +118,8 @@ const brasiliaData: CityData = {
       lng: -47.8807153,
       opens: 9,
       closes: 18,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrj4guW9F4EdqO5wo9uqPfPWXzwiZEqI7FCKBCJ6N7yH7VezOyW4Dj1ErJ6fjszXnIT6Fvdu68Dl7kjisU44bwkLhLXZczbGR_liU4CrrYxJ-i6HHjGueVeskzNcp9PEPLflVw=w408-h306-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrj4guW9F4EdqO5wo9uqPfPWXzwiZEqI7FCKBCJ6N7yH7VezOyW4Dj1ErJ6fjszXnIT6Fvdu68Dl7kjisU44bwkLhLXZczbGR_liU4CrrYxJ-i6HHjGueVeskzNcp9PEPLflVw=w408-h306-k-no",
     },
     {
       id: 9,
@@ -161,7 +167,8 @@ const brasiliaData: CityData = {
       lng: -47.8286874,
       opens: 9,
       closes: 17,
-      image: "https://lh3.googleusercontent.com/p/AF1QipOLXTb-C6NjSkSjltGtj3RCj4OJBDhacAOk8hll=w408-h272-k-no",
+      image:
+        "https://lh3.googleusercontent.com/p/AF1QipOLXTb-C6NjSkSjltGtj3RCj4OJBDhacAOk8hll=w408-h272-k-no",
     },
     {
       id: 12,
@@ -177,7 +184,8 @@ const brasiliaData: CityData = {
       lng: -47.8947415,
       opens: 7,
       closes: 20,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np8ET8bn7-1dss9zTYjRwKwcovBxM2IRjbOnFepYMloazWgaxyzbFBVXxjVMagyJyEZZ_yPY015oKZwhJYDNFaT1cPEBEks1b8cdWFAd1WBa3-xONE1z8lqDg9UxuPLV9KmY8XPOQ=w408-h272-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np8ET8bn7-1dss9zTYjRwKwcovBxM2IRjbOnFepYMloazWgaxyzbFBVXxjVMagyJyEZZ_yPY015oKZwhJYDNFaT1cPEBEks1b8cdWFAd1WBa3-xONE1z8lqDg9UxuPLV9KmY8XPOQ=w408-h272-k-no",
     },
     {
       id: 13,
@@ -193,7 +201,8 @@ const brasiliaData: CityData = {
       lng: -47.840879,
       opens: 9,
       closes: 21,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npm7e_G5piT_-ZCfUsc5WsjgSL2ZAcA_AS5iTJb1R6nQWNYGlh6cuNCCMEqWDy-ece5mKv6fM0V0uiUfTKPnNl_8JRSLYWbuBBEu5Ka-30Su3q96f3BAHNMhVDaCDx87wCxQ8N0Eg=w408-h306-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npm7e_G5piT_-ZCfUsc5WsjgSL2ZAcA_AS5iTJb1R6nQWNYGlh6cuNCCMEqWDy-ece5mKv6fM0V0uiUfTKPnNl_8JRSLYWbuBBEu5Ka-30Su3q96f3BAHNMhVDaCDx87wCxQ8N0Eg=w408-h306-k-no",
     },
     {
       id: 14,
@@ -214,7 +223,8 @@ const brasiliaData: CityData = {
     {
       id: 15,
       nome: "Fonte da Torre",
-      descricao: "A  Fonte Luminosa, é um monumento em Brasília, famosa por sua iluminação e vista panorâmica da cidade.",
+      descricao:
+        "A  Fonte Luminosa, é um monumento em Brasília, famosa por sua iluminação e vista panorâmica da cidade.",
       tempo: 1,
       preco: 0,
       avaliacao: 4.5,
@@ -229,7 +239,8 @@ const brasiliaData: CityData = {
     {
       id: 16,
       nome: "Torre de TV Digital",
-      descricao: "Monumento branco, desenhado por Oscar Niemeyer, com 170 metros de altura e vista 360º da capital e região.",
+      descricao:
+        "Monumento branco, desenhado por Oscar Niemeyer, com 170 metros de altura e vista 360º da capital e região.",
       tempo: 2,
       preco: 0,
       avaliacao: 4.5,
@@ -244,7 +255,8 @@ const brasiliaData: CityData = {
     {
       id: 17,
       nome: "Parque Nacional de Brasília",
-      descricao: "O Parque Nacional de Brasília, é um parque nacional localizado a cerca de 10 km do centro de Brasília, famoso por suas piscinas naturais de água corrente e trilhas na natureza do cerrado.",
+      descricao:
+        "O Parque Nacional de Brasília, é um parque nacional localizado a cerca de 10 km do centro de Brasília, famoso por suas piscinas naturais de água corrente e trilhas na natureza do cerrado.",
       tempo: 5,
       preco: 38,
       avaliacao: 4.5,
@@ -345,7 +357,7 @@ const brasiliaData: CityData = {
       times: {
         1: { 2: 3, 4: 2, 7: 10, 8: 4, 10: 8, 12: 8 },
         2: { 1: 3, 4: 3, 7: 8, 8: 2, 10: 7, 12: 6 },
-        4: { 1: 2, 2: 3, 7: 12  , 8: 5, 10: 10, 12: 10 },
+        4: { 1: 2, 2: 3, 7: 12, 8: 5, 10: 10, 12: 10 },
         5: { 9: 6, 11: 10, 13: 5 },
         6: { 7: 6, 10: 4, 12: 6 },
         7: { 1: 10, 2: 8, 4: 12, 6: 6, 8: 6, 10: 3, 12: 4 },
@@ -384,7 +396,7 @@ const brasiliaData: CityData = {
         18: { 5: 24, 9: 32, 13: 29, 19: 31 },
         19: { 1: 15, 4: 13, 5: 15, 13: 12, 16: 28, 18: 31, 20: 11 },
         20: { 1: 6, 2: 6, 4: 4, 8: 8, 19: 11 },
-        21: { 6: 8, 7: 5, 10: 6, 12: 6, 15: 6 }
+        21: { 6: 8, 7: 5, 10: 6, 12: 6, 15: 6 },
       },
     },
     walking: {
@@ -403,7 +415,7 @@ const brasiliaData: CityData = {
         18: { 5: 32, 9: 40, 13: 37, 19: 39 },
         19: { 1: 25, 4: 23, 5: 25, 13: 22, 16: 38, 18: 39, 20: 15 },
         20: { 1: 9, 2: 9, 4: 7, 8: 11, 19: 15 },
-        21: { 6: 12, 7: 9, 10: 10, 12: 10, 15: 10 }
+        21: { 6: 12, 7: 9, 10: 10, 12: 10, 15: 10 },
       },
       costs: {
         1: { 2: 0, 4: 0, 8: 0 },

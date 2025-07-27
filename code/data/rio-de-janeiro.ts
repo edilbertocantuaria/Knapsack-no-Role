@@ -1,11 +1,12 @@
-import type { CityData } from "@/lib/types"
+import type { CityData } from "@/lib/types";
 
 const rioData: CityData = {
   attractions: [
     {
       id: 1,
       nome: "Cristo Redentor",
-      descricao: "Uma das Sete Maravilhas do Mundo Moderno, com uma vista deslumbrante da cidade.",
+      descricao:
+        "Uma das Sete Maravilhas do Mundo Moderno, com uma vista deslumbrante da cidade.",
       tempo: 3,
       preco: 85,
       avaliacao: 4.9,
@@ -15,12 +16,14 @@ const rioData: CityData = {
       lng: -43.2214636,
       opens: 8,
       closes: 19,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np6Uy71MMeyvbM27a9RYtO90Lf3GzfZlSyX4Ehu3LIHgHfIFoYB6uxaHFr84SP0mP0ymIEwfc6F1Hhi9GwDLw6uwzG23_MpjEUjh3PPQEePm_rHjozw5FCiMuhmlEQlCSyv9i6XiA=w408-h272-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np6Uy71MMeyvbM27a9RYtO90Lf3GzfZlSyX4Ehu3LIHgHfIFoYB6uxaHFr84SP0mP0ymIEwfc6F1Hhi9GwDLw6uwzG23_MpjEUjh3PPQEePm_rHjozw5FCiMuhmlEQlCSyv9i6XiA=w408-h272-k-no",
     },
     {
       id: 2,
       nome: "Pão de Açúcar",
-      descricao: "Complexo de morros que oferece vistas panorâmicas espetaculares através de um teleférico.",
+      descricao:
+        "Complexo de morros que oferece vistas panorâmicas espetaculares através de um teleférico.",
       tempo: 3,
       preco: 160,
       avaliacao: 4.9,
@@ -30,12 +33,14 @@ const rioData: CityData = {
       lng: -48.8344809,
       opens: 8,
       closes: 20,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqMSdYK99S9pIJNP1VZ_FyyfFNF0dzBnFletmqJZ4IcDOk7f-jTgBX-B6ltd86vBx10P-TiWinqBLNXhXBbqC8AkPpYcukJDiH1pma5wP9L-h5R643irfUPCQCGxWKQhObflMI=w408-h272-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqMSdYK99S9pIJNP1VZ_FyyfFNF0dzBnFletmqJZ4IcDOk7f-jTgBX-B6ltd86vBx10P-TiWinqBLNXhXBbqC8AkPpYcukJDiH1pma5wP9L-h5R643irfUPCQCGxWKQhObflMI=w408-h272-k-no",
     },
     {
       id: 3,
       nome: "Praia de Copacabana",
-      descricao: "Uma das praias mais famosas do mundo, conhecida por sua beleza e calçadão movimentado.",
+      descricao:
+        "Uma das praias mais famosas do mundo, conhecida por sua beleza e calçadão movimentado.",
       tempo: 3,
       preco: 0,
       avaliacao: 4.7,
@@ -45,12 +50,14 @@ const rioData: CityData = {
       lng: -43.1923157,
       opens: 0,
       closes: 24,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noYH8r5trFnAMGVB377dEklYxIpPhMwTO0dJX7ua_FtSyljcZGnNlBXBvWkaiaDbwqC0UA1jwYERqdLTs_SYvjZHOo4aJPocw2EN2eSQ1uM0lZRWMwu5KxnH3QfA2cKGwD5qtGLBQ=w408-h272-k-no",
+      image:
+        "https://www.remessaonline.com.br/blog/wp-content/uploads/2024/12/Praia-de-Copacabana-Rio-de-Janeiro-Brasil-2.jpg",
     },
     {
       id: 4,
       nome: "Museu do Amanhã",
-      descricao: "Museu de ciências com foco em sustentabilidade e o futuro do planeta.",
+      descricao:
+        "Museu de ciências com foco em sustentabilidade e o futuro do planeta.",
       tempo: 2.5,
       preco: 40,
       avaliacao: 4.7,
@@ -60,12 +67,14 @@ const rioData: CityData = {
       lng: -43.1820167,
       opens: 10,
       closes: 18,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrweZHLWfoHia0r_MFWV6Oc4rNo9LbtDytxtmj5eobtYMPZIisDDfRJX7H9FwtltqcH4wHG8tjrYBg5qz6zv7YBAOkrSi4_zerkXscBKKjfJZELJ9CVjcJWWkI1b2owJkSa8CcGt1KG1g=w408-h306-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrweZHLWfoHia0r_MFWV6Oc4rNo9LbtDytxtmj5eobtYMPZIisDDfRJX7H9FwtltqcH4wHG8tjrYBg5qz6zv7YBAOkrSi4_zerkXscBKKjfJZELJ9CVjcJWWkI1b2owJkSa8CcGt1KG1g=w408-h306-k-no",
     },
     {
       id: 5,
       nome: "Escadaria Selarón",
-      descricao: "Uma escadaria colorida e vibrante, decorada com azulejos de todo o mundo.",
+      descricao:
+        "Uma escadaria colorida e vibrante, decorada com azulejos de todo o mundo.",
       tempo: 1,
       preco: 0,
       avaliacao: 4.6,
@@ -75,12 +84,14 @@ const rioData: CityData = {
       lng: -43.1817785,
       opens: 0,
       closes: 24,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr4DTiLLDE9SzkoshTm24J5bADUq0-Nj5pjxXC8YqL8gTOUkO-kvhJO-SwcbjXwMBt2dwYaJoGC1J-Wfb4hYyxBmmmQ6khWVCWIrf5nZx8gdaLtbYGQh2hIPOVj_WHGcvV7SwExRw=w408-h544-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr4DTiLLDE9SzkoshTm24J5bADUq0-Nj5pjxXC8YqL8gTOUkO-kvhJO-SwcbjXwMBt2dwYaJoGC1J-Wfb4hYyxBmmmQ6khWVCWIrf5nZx8gdaLtbYGQh2hIPOVj_WHGcvV7SwExRw=w408-h544-k-no",
     },
     {
       id: 6,
       nome: "Jardim Botânico",
-      descricao: "Um oásis de tranquilidade com uma vasta coleção de plantas e árvores de todo o mundo.",
+      descricao:
+        "Um oásis de tranquilidade com uma vasta coleção de plantas e árvores de todo o mundo.",
       tempo: 3,
       preco: 30,
       avaliacao: 4.8,
@@ -90,12 +101,14 @@ const rioData: CityData = {
       lng: -43.2486902,
       opens: 8,
       closes: 17,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqlROh8Pn6Um6CGtac82P2eRewELb58vA5hh4ju0-F5dwv5ealm3Zp4Gxcsp-OGlOOLuecxET4rolUa5IY1q-x2VsO3dy3M5qAwUgzO3ahtzNq7aOrnFfXsIqhfPU8pO-eDLsk=w408-h306-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqlROh8Pn6Um6CGtac82P2eRewELb58vA5hh4ju0-F5dwv5ealm3Zp4Gxcsp-OGlOOLuecxET4rolUa5IY1q-x2VsO3dy3M5qAwUgzO3ahtzNq7aOrnFfXsIqhfPU8pO-eDLsk=w408-h306-k-no",
     },
     {
       id: 7,
       nome: "Parque Lage",
-      descricao: "Parque público com trilhas, um palacete histórico e vistas deslumbrantes do Cristo Redentor.",
+      descricao:
+        "Parque público com trilhas, um palacete histórico e vistas deslumbrantes do Cristo Redentor.",
       tempo: 1.5,
       preco: 0,
       avaliacao: 4.7,
@@ -105,12 +118,14 @@ const rioData: CityData = {
       lng: -43.2156859,
       opens: 9,
       closes: 17,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrCUp_27CQC7QHFGLkwOy8OY8cuXwoF9l2mNZNs2aIyrShtdWIqtaBrgqVLsxwtBfh9RrOZ_97P7aY5062Q6nB1zTXbhblfK7LULVYGKiVqoDgo6UTOVftZ7gEG7vTgTiM0uMLJ=w408-h255-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrCUp_27CQC7QHFGLkwOy8OY8cuXwoF9l2mNZNs2aIyrShtdWIqtaBrgqVLsxwtBfh9RrOZ_97P7aY5062Q6nB1zTXbhblfK7LULVYGKiVqoDgo6UTOVftZ7gEG7vTgTiM0uMLJ=w408-h255-k-no",
     },
     {
       id: 8,
       nome: "Arcos da Lapa",
-      descricao: "Um aqueduto histórico que se tornou um símbolo da vida noturna boêmia do Rio.",
+      descricao:
+        "Um aqueduto histórico que se tornou um símbolo da vida noturna boêmia do Rio.",
       tempo: 0.5,
       preco: 0,
       avaliacao: 4.5,
@@ -120,12 +135,14 @@ const rioData: CityData = {
       lng: -43.1827196,
       opens: 0,
       closes: 24,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nriepPX9OIFjwBczyvY3r8QSelhwM6jo88p4lnKwXmjEMxYbZPBgUhmyCv-cyoaGDPXng81xepe-paWRpFJfBLZwrLfoVMuNSQ3gHnemgqf2-OlvnVeN5QPqe8luyHIVIUWoOHZ=w408-h305-k-no",
+      image:
+        "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nriepPX9OIFjwBczyvY3r8QSelhwM6jo88p4lnKwXmjEMxYbZPBgUhmyCv-cyoaGDPXng81xepe-paWRpFJfBLZwrLfoVMuNSQ3gHnemgqf2-OlvnVeN5QPqe8luyHIVIUWoOHZ=w408-h305-k-no",
     },
     {
       id: 9,
       nome: "Praia de Ipanema",
-      descricao: "Uma das praias mais famosas do mundo, conhecida por sua beleza e calçadão movimentado.",
+      descricao:
+        "Uma das praias mais famosas do mundo, conhecida por sua beleza e calçadão movimentado.",
       tempo: 3,
       preco: 0,
       avaliacao: 4.7,
@@ -135,12 +152,14 @@ const rioData: CityData = {
       lng: -43.2156859,
       opens: 0,
       closes: 24,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrCUp_27CQC7QHFGLkwOy8OY8cuXwoF9l2mNZNs2aIyrShtdWIqtaBrgqVLsxwtBfh9RrOZ_97P7aY5062Q6nB1zTXbhblfK7LULVYGKiVqoDgo6UTOVftZ7gEG7vTgTiM0uMLJ=w408-h255-k-no",
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/8c/14/06/ipanema.jpg?w=1200&h=-1&s=1",
     },
     {
       id: 10,
       nome: "Catedral Metropolitana",
-      descricao: "Uma das catedrais mais famosas do mundo, conhecida por sua beleza e calçadão movimentado.",
+      descricao:
+        "Uma das catedrais mais famosas do mundo, conhecida por sua beleza e calçadão movimentado.",
       tempo: 3,
       preco: 0,
       avaliacao: 4.7,
@@ -150,7 +169,8 @@ const rioData: CityData = {
       lng: -43.180777,
       opens: 0,
       closes: 24,
-      image: "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrCUp_27CQC7QHFGLkwOy8OY8cuXwoF9l2mNZNs2aIyrShtdWIqtaBrgqVLsxwtBfh9RrOZ_97P7aY5062Q6nB1zTXbhblfK7LULVYGKiVqoDgo6UTOVftZ7gEG7vTgTiM0uMLJ=w408-h255-k-no",
+      image:
+        "https://www.smartriotour.com.br/wp-content/uploads/2019/10/catedral_163877_orig-6265220.jpg",
     },
     // {
     //   id: 11,
@@ -214,12 +234,27 @@ const rioData: CityData = {
     // },
   ],
   restaurants: [
-    { nome: "Confeitaria Colombo", tipo: "Cafeteria Histórica", proximo_a: [4, 5, 8] },
-    { nome: "Marius Degustare", tipo: "Churrascaria/Frutos do Mar", proximo_a: [3] },
+    {
+      nome: "Confeitaria Colombo",
+      tipo: "Cafeteria Histórica",
+      proximo_a: [4, 5, 8],
+    },
+    {
+      nome: "Marius Degustare",
+      tipo: "Churrascaria/Frutos do Mar",
+      proximo_a: [3],
+    },
     { nome: "Aprazível", tipo: "Brasileira", proximo_a: [5, 8] },
     { nome: "Bar Urca", tipo: "Bar/Petiscos", proximo_a: [2] },
   ],
-  categories: ["Praia", "Monumento", "Cultural", "Natureza", "Lazer", "Vida Noturna"],
+  categories: [
+    "Praia",
+    "Monumento",
+    "Cultural",
+    "Natureza",
+    "Lazer",
+    "Vida Noturna",
+  ],
   distances: {
     driving: {
       times: {
@@ -255,5 +290,5 @@ const rioData: CityData = {
     },
   },
   center: [-22.9068, -43.1729],
-}
-export default rioData
+};
+export default rioData;
